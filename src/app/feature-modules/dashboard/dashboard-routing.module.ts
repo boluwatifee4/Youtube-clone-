@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
-
+import { VideosGalleryComponent } from './videos-gallery/videos-gallery.component';
 
 const routes: Routes = [
     { path: '', component: LayoutComponent, children: [
-        // { path: 'login', component: LoginComponent },
-        // { path: 'sign-up', component: SignUpComponent }
+        { path: '**', component: VideosGalleryComponent },
     ]}
 ];
 
