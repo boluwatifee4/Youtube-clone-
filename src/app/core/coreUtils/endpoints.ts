@@ -4,7 +4,8 @@ export class Endpoints {
     public static AUTH = `${environment.baseUrl}auth`;
     public static USERS = `${environment.baseUrl}users`;
     public static VIDEOS = `${environment.baseUrl}videos`;
-    public static YOUTUBE_VIDEOS = `${environment.youtubeAPI}videos`;
+    public static YOUTUBE_VIDEOS = `${environment.youtubeAPI}search`;
+    public static YOUTUBE_CHANNELS = `${environment.youtubeAPI}channels`;
     public static COMMENTS = `${environment.baseUrl}comments`;
     public static REPLIES = `${environment.baseUrl}replies`;
     public static FEELINGS = `${environment.baseUrl}feelings`;
@@ -12,4 +13,5 @@ export class Endpoints {
     public static HISTORIES = `${environment.baseUrl}histories`;
     public static CATEGORIES = `${environment.baseUrl}categories`;
     public static SEARCH = `${environment.baseUrl}Search`;
+    public static API_KEY = `${environment.myYoutubeApiKey}`;
 }
