@@ -1,0 +1,51 @@
+<div class="p-4  bg-gray-900">
+  <div  class=" flex  m-2   ">
+    <div *ngFor="let video of videos" class="w-[60%]">
+      <iframe class="w-full h-96" [src]="url | safe" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+
+      <div class="my-2">
+        <h1 class="text-white text-xl text-semibold">{{ video.snippet.title }}</h1>
+        <div class="my-2 flex justify-between">
+          <div class="flex">
+            <div style="shape-outside: circle()" class="w-6  flex justify-center items-center">
+              <h1 class="bg-red-600  rounded-full text-lg font-bold px-2 ">{{video?.snippet?.channelTitle[0]}}</h1>
+            </div>
+            <div class="text-sm mx-2">
+              <p class="font-semibold">{{video?.snippet?.channelTitle}}</p>
+              <p class="text-xs">{{video?.snippet?.publishedAt | date: 'dd/MMM/yy hh:mm a'}}</p>
+            </div>
+          </div>
+          <div class="my-2">
+            <div class="flex items-center">
+              <fa-icon class="mx-2 text-md" [icon]="likes"></fa-icon><span class="text-xs">{{video?.statistics?.likeCount | number: '2.'}}</span>
+              <fa-icon class="mx-2 text-md" [icon]="views"></fa-icon><span class="text-xs">{{video?.statistics?.viewCount | number: '2.'}}</span>
+              <fa-icon class="mx-2 text-md" [icon]="comments"></fa-icon><span class="text-xs">{{video?.statistics?.commentCount | number: '2.'}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="[40%]">
+
+    </div>
+  </div>
+</div>
+<!-- </div> -->
+
+<!-- <div class="my-2">
+  
+ 
+    
+    
+    </div>
+    
+      
+        
+        
+      </div>
+    </div>
+  </div>
+</div> -->

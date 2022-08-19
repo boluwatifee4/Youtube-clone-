@@ -7,12 +7,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 // import the HttpClientModule from @angular/common/http,
 
 import { HttpClientModule } from '@angular/common/http';
+import { SafePipe } from './shared/pipes/safe.pipe';
 // import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 // import { DashboardComponent } from './feature-modules/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    SafePipe
     // DashboardComponent
   ],
   imports: [

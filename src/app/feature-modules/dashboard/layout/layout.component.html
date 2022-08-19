@@ -1,68 +1,72 @@
-<div [ngClass]="darkMode === true ? ' bg-gray-800 text-white' : 'bg-white text-black'" class="h-screen flex ">
+<div [ngClass]="darkMode === true ? ' bg-gray-800 text-white' : 'bg-white text-black'" class=" flex ">
 
-    <div class="sidebar mt-6 pl-2 px-6 py-2">
-        <div class="items-center flex flex-col">
-            <fa-icon [icon]="Hamburger" class=" font-light  text-lg"></fa-icon>
-        </div>
-
-        <div class="mt-10">
-            <div class="items-center flex flex-col my-5">
-                <fa-icon [icon]="home" class=" font-light  text-lg"></fa-icon>
-                <p class="text-xs my-1">Home</p>
+    <div class="sidebar  mt-6 pl-2 px-6 py-2">
+            <div class="sticky left-0 top-5">
+            <div class="items-center flex flex-col">
+                <fa-icon [icon]="Hamburger" class=" font-light  text-lg"></fa-icon>
             </div>
-
-            <div class="items-center flex flex-col my-5">
-                <fa-icon [icon]="explore" class=" font-light  text-lg"></fa-icon>
-                <p class="text-xs my-1">Explore</p>
+    
+            <div class="mt-10">
+                <div class="items-center flex flex-col my-5">
+                    <fa-icon [icon]="home" class=" font-light  text-lg"></fa-icon>
+                    <p class="text-xs my-1">Home</p>
+                </div>
+    
+                <div class="items-center flex flex-col my-5">
+                    <fa-icon [icon]="explore" class=" font-light  text-lg"></fa-icon>
+                    <p class="text-xs my-1">Explore</p>
+                </div>
+                <div class="items-center flex flex-col my-5">
+                    <fa-icon [icon]="shorts" class=" font-light  text-lg"></fa-icon>
+                    <p class="text-xs my-1">Shorts</p>
+                </div>
+    
+                <div class="items-center flex flex-col my-5">
+                    <fa-icon [icon]="video" class=" font-light  text-lg"></fa-icon>
+                    <p class="text-xs my-1">Subscriptions</p>
+                </div>
+    
+                <div class="items-center flex flex-col my-5">
+                    <fa-icon [icon]="watching" class=" font-light  text-lg"></fa-icon>
+                    <p class="text-xs my-1">Library</p>
+                </div>
+    
+    
             </div>
-            <div class="items-center flex flex-col my-5">
-                <fa-icon [icon]="shorts" class=" font-light  text-lg"></fa-icon>
-                <p class="text-xs my-1">Shorts</p>
-            </div>
-
-            <div class="items-center flex flex-col my-5">
-                <fa-icon [icon]="video" class=" font-light  text-lg"></fa-icon>
-                <p class="text-xs my-1">Subscriptions</p>
-            </div>
-
-            <div class="items-center flex flex-col my-5">
-                <fa-icon [icon]="watching" class=" font-light  text-lg"></fa-icon>
-                <p class="text-xs my-1">Library</p>
-            </div>
-
-
         </div>
     </div>
     <div class="body py-2">
-        <header class="flex items-center py-1 justify-between border-b border-gray-700">
-            <div class="logo">
-                <img src="assets/images/logo.png" alt="logo" class="w-20">
-            </div>
-            <div class="search flex items-center h-fit justify-between  ">
-                <div class="bg-gray-700 border border-gray-700">
-                    <input type="text" placeholder="Search" class="bg-gray-900 h-fit w-96 pl-2 py-2 p-6"><span
-                        class="py-2 px-6">
-                        <fa-icon [icon]="search" class=" font-light  text-md text-gray-300"></fa-icon>
-                    </span>
+        <div class="sticky bg-gray-800 top-0">
+            <header class="flex items-center py-1 justify-between border-b border-gray-700">
+                <div class="logo">
+                    <img src="assets/images/logo.png" alt="logo" class="w-20">
                 </div>
-                <div class="mx-3 bg-gray-900 py-2 p-3 h-fit rounded-full">
-                    <fa-icon [icon]="microphone" class="h-fit font-light  text-lg text-gray-300"></fa-icon>
+                <div class="search flex items-center h-fit justify-between  ">
+                    <div class="bg-gray-700 border border-gray-700">
+                        <input type="text" placeholder="Search" class="bg-gray-900 h-fit w-96 pl-2 py-2 p-6"><span
+                            class="py-2 px-6">
+                            <fa-icon [icon]="search" class=" font-light  text-md text-gray-300"></fa-icon>
+                        </span>
+                    </div>
+                    <div class="mx-3 bg-gray-900 py-2 p-3 h-fit rounded-full">
+                        <fa-icon [icon]="microphone" class="h-fit font-light  text-lg text-gray-300"></fa-icon>
+                    </div>
                 </div>
-            </div>
-            <div class="headerActions flex items-center justify-between px-3">
-                <fa-icon [icon]="video" class=" font-light mx-3 text-gray-300  text-xl"></fa-icon>
-                <fa-icon [icon]="bell" class=" font-light mx-3 text-gray-300 text-xl"></fa-icon>
-                <fa-icon [icon]="user" class=" font-light mx-3 text-gray-300 text-2xl"></fa-icon>
-            </div>
-        </header>
-        <div class="flex border-b border-gray-700 p-2 px-3 items-center">
-            <!-- <div class="px-5 p-2 backdrop-blur-md">
-                ←
-            </div> -->
-            <div class="categories  sc2 overflow-x-scroll ">
-                <div style="width: max-content;" class="flex items-center ">
-                    <div *ngFor="let category of categories" class="mx-2 w-auto">
-                        <p class="bg-gray-700 border text-sm border-gray-500 p-2   rounded-full">{{category?.name}}</p>
+                <div class="headerActions flex items-center justify-between px-3">
+                    <fa-icon [icon]="video" class=" font-light mx-3 text-gray-300  text-xl"></fa-icon>
+                    <fa-icon [icon]="bell" class=" font-light mx-3 text-gray-300 text-xl"></fa-icon>
+                    <fa-icon [icon]="user" class=" font-light mx-3 text-gray-300 text-2xl"></fa-icon>
+                </div>
+            </header>
+            <div class="flex border-b border-gray-700 p-2 px-3 items-center">
+                <!-- <div class="px-5 p-2 backdrop-blur-md">
+                    ←
+                </div> -->
+                <div class="categories  sc2 overflow-x-scroll ">
+                    <div style="width: max-content;" class="flex items-center ">
+                        <div *ngFor="let category of categories" class="mx-2 w-auto">
+                            <p class="bg-gray-700 border text-sm border-gray-500 p-2   rounded-full">{{category?.name}}</p>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { Endpoints } from '../../coreUtils/endpoints';
-import { CHANNELSMODEL } from '../../../shared/models/video.model';
+import { CHANNELSMODEL, VideoModel } from '../../../shared/models/video.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -30,6 +30,16 @@ export class VideosServiceService {
         key: channels.key,
         q: q,
         maxResults: 40
+      }
+    } );
+  }
+
+  getSingleVideo(videos: VideoModel): Observable<any> {
+    return this.http.get(`${Endpoints.VIDEO}`,{
+      params: {
+        part: videos.part,
+        id: videos.id,
+        key: Endpoints.API_KEY
       }
     } );
   }

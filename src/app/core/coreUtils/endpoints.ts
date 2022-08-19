@@ -3,7 +3,7 @@ import { environment } from "src/environments/environment";
 export class Endpoints {
     public static AUTH = `${environment.baseUrl}auth`;
     public static USERS = `${environment.baseUrl}users`;
-    public static VIDEOS = `${environment.baseUrl}videos`;
+    public static VIDEO = `${environment.youtubeAPI}videos`;
     public static YOUTUBE_VIDEOS = `${environment.youtubeAPI}search`;
     public static YOUTUBE_CHANNELS = `${environment.youtubeAPI}channels`;
     public static COMMENTS = `${environment.baseUrl}comments`;

@@ -3,3 +3,8 @@ export class CHANNELSMODEL {
     // forUserName!: string;
     key!: string ;
 }
+
+export class VideoModel {
+    id!: string;
+    part!: string;
+}
