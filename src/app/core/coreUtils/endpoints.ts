@@ -6,7 +6,7 @@ export class Endpoints {
     public static VIDEO = `${environment.youtubeAPI}videos`;
     public static YOUTUBE_VIDEOS = `${environment.youtubeAPI}search`;
     public static YOUTUBE_CHANNELS = `${environment.youtubeAPI}channels`;
-    public static COMMENTS = `${environment.baseUrl}comments`;
+    public static COMMENTS = `${environment.youtubeAPI}comments`;
     public static REPLIES = `${environment.baseUrl}replies`;
     public static FEELINGS = `${environment.baseUrl}feelings`;
     public static SUBSCRIPTIONS = `${environment.baseUrl}subscriptions`;

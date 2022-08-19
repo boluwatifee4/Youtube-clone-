@@ -1,6 +1,6 @@
 <div class="p-4  bg-gray-900">
-  <div  class=" flex  m-2   ">
-    <div *ngFor="let video of videos" class="w-[60%]">
+  <div class=" flex justify-between  m-2   ">
+    <div *ngFor="let video of videos" class="w-[70%]">
       <iframe class="w-full h-96" [src]="url | safe" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
@@ -20,16 +20,41 @@
           </div>
           <div class="my-2">
             <div class="flex items-center">
-              <fa-icon class="mx-2 text-md" [icon]="likes"></fa-icon><span class="text-xs">{{video?.statistics?.likeCount | number: '2.'}}</span>
-              <fa-icon class="mx-2 text-md" [icon]="views"></fa-icon><span class="text-xs">{{video?.statistics?.viewCount | number: '2.'}}</span>
-              <fa-icon class="mx-2 text-md" [icon]="comments"></fa-icon><span class="text-xs">{{video?.statistics?.commentCount | number: '2.'}}</span>
+              <fa-icon class="mx-2 text-md" [icon]="likes"></fa-icon><span
+                class="text-xs">{{video?.statistics?.likeCount | number: '2.'}}</span>
+              <fa-icon class="mx-2 text-md" [icon]="views"></fa-icon><span
+                class="text-xs">{{video?.statistics?.viewCount | number: '2.'}}</span>
+              <fa-icon class="mx-2 text-md" [icon]="comments"></fa-icon><span
+                class="text-xs">{{video?.statistics?.commentCount | number: '2.'}}</span>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="[40%]">
-
+    <div class="w-[30%]  p-3 flex justify-center">
+      <div class="h-[80%] sc2 overflow-y-scroll">
+        <h1 class="font-bold my-2">Related Videos</h1>
+        <div class="flex flex-col justify-evenly ">
+          <div 
+          *ngFor="let video of relatedVids"
+          class="my-3 h-fit">
+            <div (click)="viewVideo(video?.id?.videoId)">
+              <img src={{video?.snippet?.thumbnails?.medium?.url}} alt="" class=" w-64">
+              <div class="my-2 flex justify-start">
+                  <div class="mr-2">
+                      <img src={{video?.snippet?.thumbnails?.medium?.url}} alt="" class=" rounded-full w-8 h-8">
+                  </div>
+                  <div>
+                      <p class="text-sm font-semibold my-1">{{video?.snippet?.title | slice:0:25}}...</p>
+                      <p class="text-xs text-gray-300">
+                          {{video?.snippet?.channelTitle}}
+                      </p>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

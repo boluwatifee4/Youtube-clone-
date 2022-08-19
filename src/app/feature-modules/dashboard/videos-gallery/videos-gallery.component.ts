@@ -16,7 +16,7 @@ export class VideosGalleryComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) { }
-  q: string = "ngHouston";
+  q: string = "reviews | compilations ";
    channels: CHANNELSMODEL = {
     part: 'snippet',
     // forUserName: 'BradTraversy',
@@ -50,7 +50,7 @@ export class VideosGalleryComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getPublicVideos();
-    this.getSingleVideo();
+    // this.getSingleVideo();
   }
 
 }
