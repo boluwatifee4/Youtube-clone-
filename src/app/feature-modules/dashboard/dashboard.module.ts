@@ -6,9 +6,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { VideosGalleryComponent } from './videos-gallery/videos-gallery.component';
 import { WatchVideoComponent } from './watch-video/watch-video.component';
 import { SafePipe } from 'src/app/shared/pipes/safe.pipe';
+import { VideosLibraryComponent } from './videos-library/videos-library.component';
 
 @NgModule({
-    declarations: [LayoutComponent, VideosGalleryComponent, WatchVideoComponent, SafePipe],
+    declarations: [LayoutComponent, VideosGalleryComponent, WatchVideoComponent, SafePipe, VideosLibraryComponent],
     imports: [
         CommonModule,
         DashBoardRoutingModule,

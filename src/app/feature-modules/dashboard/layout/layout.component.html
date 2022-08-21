@@ -28,7 +28,9 @@
                     <p class="text-xs my-1">Subscriptions</p>
                 </div>
     
-                <div class="cursor-pointer items-center flex flex-col my-5">
+                <div 
+                [routerLink]="['/dashboard/library']"
+                class="cursor-pointer items-center flex flex-col my-5">
                     <fa-icon [icon]="watching" class=" font-light  text-lg"></fa-icon>
                     <p class="text-xs my-1">Library</p>
                 </div>
@@ -45,17 +47,18 @@
                 </div>
                 <div class="search flex items-center h-fit justify-between  ">
                     <div class="bg-gray-700 border border-gray-700">
-                        <input type="text" placeholder="Search" class="bg-gray-900 h-fit w-96 pl-2 py-2 p-6"><span
+                        <input #searchInput type="text" placeholder="Search" class="bg-gray-900 h-fit w-96 pl-2 py-2 p-6"><span
+                        (click)="searchInputValue(searchInput.value)"
                             class="py-2 px-6">
-                            <fa-icon [icon]="search" class=" font-light  text-md text-gray-300"></fa-icon>
+                            <fa-icon  [icon]="search" class=" font-light  text-md text-gray-300"></fa-icon>
                         </span>
                     </div>
-                    <div class="mx-3 bg-gray-900 py-2 p-3 h-fit rounded-full">
+                    <div (click)="startRecording()" class="mx-3 bg-gray-900 py-2 p-3 h-fit rounded-full">
                         <fa-icon [icon]="microphone" class="h-fit font-light  text-lg text-gray-300"></fa-icon>
                     </div>
                 </div>
                 <div class="headerActions flex items-center justify-between px-3">
-                    <fa-icon [icon]="video" class=" font-light mx-3 text-gray-300  text-xl"></fa-icon>
+                    <fa-icon (click)="stopRecording()" [icon]="video" class=" font-light mx-3 text-gray-300  text-xl"></fa-icon>
                     <fa-icon [icon]="bell" class=" font-light mx-3 text-gray-300 text-xl"></fa-icon>
                     <fa-icon [icon]="user" class=" font-light mx-3 text-gray-300 text-2xl"></fa-icon>
                 </div>
@@ -66,8 +69,8 @@
                 </div> -->
                 <div class="categories  sc2 overflow-x-scroll ">
                     <div style="width: max-content;" class="flex items-center ">
-                        <div *ngFor="let category of categories" class="mx-2 w-auto">
-                            <p class="bg-gray-700 border text-sm border-gray-500 p-2   rounded-full">{{category?.name}}</p>
+                        <div *ngFor="let category of categories" class="mx-2 w-auto cursor-pointer">
+                            <p (click)="sendCategories(category?.value)" class="bg-gray-700 border text-sm border-gray-500 p-2   rounded-full">{{category?.name}}</p>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,26 @@
+
+<div class="py-2">
+    <div class="my-2">
+        <h1 class="font-semibold text-2xl">Recents</h1>
+    </div>
+    <div
+    [ngClass]=" setJustifyContentAround === true ? 'justify-evenly' : 'justify-start'" 
+    class=" flex flex-wrap m-2 ">
+        <div class="flex cursor-pointer flex-col m-1 my-3" *ngFor="let recent of recents">
+           <div (click)="viewVideo(recent?.videoId)">
+            <img src={{recent?.description}} alt="" class=" w-64">
+            <div class="my-2 flex justify-start">
+                <div class="mr-2">
+                    <img src={{recent?.description}} alt="" class=" rounded-full w-8 h-8">
+                </div>
+                <div>
+                    <p class="text-sm font-semibold my-1">{{recent?.channelTitle | slice:0:25}}...</p>
+                    <p class="text-xs text-gray-300">
+                        {{recent?.thumbnailUrl}}
+                    </p>
+                </div>
+            </div>
+           </div>
+        </div>
+    </div>
+</div>
