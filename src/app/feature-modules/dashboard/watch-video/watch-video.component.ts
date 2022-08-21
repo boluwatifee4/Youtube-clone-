@@ -32,6 +32,7 @@ export class WatchVideoComponent implements OnInit {
   commentS: any = [];
   q: string = "";
   relatedVids: any = [];
+  emptyState: boolean = false;
   constructor(
     private videosService: VideosServiceService,
     private router: Router,
@@ -83,9 +84,14 @@ export class WatchVideoComponent implements OnInit {
         this.url = this.url.replace('"', '');
         // remove last letter from url
         this.url = this.url.slice(0, -1);
-        this.q = this.videos[0].snippet.tags[0] + " | " + this.videos[0].snippet.tags[1];
+        if(this.videos[0].snippet.tags !== undefined){
+        this.q = this.videos[0]?.snippet?.tags[0] + " | " + this.videos[0]?.snippet?.tags[1];
         // console.log("q", this.q);
         getRelatedVideos(this.q);
+        this.emptyState = false;
+        }else{
+          this.emptyState = true;
+        }
 
 
       }
@@ -95,6 +101,11 @@ export class WatchVideoComponent implements OnInit {
       this.videosService.getPublicVideos(this.VideoInterface, q).subscribe({
         next: (data: any) => {
           this.relatedVids = data?.items;
+          if(this.relatedVids?.length > 0){
+            this.emptyState = false;
+          } else {
+            this.emptyState = true;
+          }
           console.log("related videos", this.relatedVids);
         }
       })

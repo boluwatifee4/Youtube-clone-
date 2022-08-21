@@ -32,12 +32,12 @@
       </div>
     </div>
     <div class="w-[30%]  p-3 flex justify-center">
-      <div class="h-[80%] sc2 overflow-y-scroll">
+      <div class="h-fit">
         <h1 class="font-bold my-2">Related Videos</h1>
-        <div class="flex flex-col justify-evenly ">
+        <div *ngIf="emptyState === false" class="flex h-96 sc2 overflow-y-scroll flex-col justify-evenly ">
           <div 
           *ngFor="let video of relatedVids"
-          class="my-3 h-fit">
+          class="my-3 ">
             <div (click)="viewVideo(video?.id?.videoId)">
               <img src={{video?.snippet?.thumbnails?.medium?.url}} alt="" class=" w-64">
               <div class="my-2 flex justify-start">
@@ -53,6 +53,9 @@
               </div>
             </div>
           </div>
+        </div>
+        <div *ngIf="emptyState === true" class="my-2">
+          <p>Sorry Nothing To Show</p>
         </div>
       </div>
     </div>

@@ -11,6 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class VideosGalleryComponent implements OnInit {
 
   publicVideos : any = [];
+  emptyState: boolean = false;
   constructor(
     private videosService: VideosServiceService,
     private router: Router,
@@ -36,13 +37,13 @@ export class VideosGalleryComponent implements OnInit {
     })
   }
 
-  getSingleVideo() {
-    this.videosService.getSingleVideo(this.video).subscribe({
-      next: (data: any) => {
-        console.log("single video",data);
-      }
-    })
-  }
+  // getSingleVideo() {
+  //   this.videosService.getSingleVideo(this.video).subscribe({
+  //     next: (data: any) => {
+  //       console.log("single video",data);
+  //     }
+  //   })
+  // }
 
  viewVideo(id: any) {
     console.log("video",id);
