@@ -31,3 +31,23 @@
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
     z-index: 1;
   }
+
+  // animated beaming bg color
+ .beam{
+  animation: beam 3s ease-in-out infinite;
+ }
+  @keyframes beam{
+    0%{
+      background-color: #dee6f6;
+      transform: scale(1);
+    }
+    50%{
+      background-color: #e5e7eb;
+      transform: scale(1.1);
+     
+    }
+    100%{
+      background-color: #d3d5d9;
+      transform: scale(1);
+    }
+  }

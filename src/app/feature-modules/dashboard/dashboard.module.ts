@@ -7,9 +7,10 @@ import { VideosGalleryComponent } from './videos-gallery/videos-gallery.componen
 import { WatchVideoComponent } from './watch-video/watch-video.component';
 import { SafePipe } from 'src/app/shared/pipes/safe.pipe';
 import { VideosLibraryComponent } from './videos-library/videos-library.component';
+import { ShortsComponent } from './shorts/shorts.component';
 
 @NgModule({
-    declarations: [LayoutComponent, VideosGalleryComponent, WatchVideoComponent, SafePipe, VideosLibraryComponent],
+    declarations: [LayoutComponent, VideosGalleryComponent, WatchVideoComponent, SafePipe, VideosLibraryComponent, ShortsComponent],
     imports: [
         CommonModule,
         DashBoardRoutingModule,

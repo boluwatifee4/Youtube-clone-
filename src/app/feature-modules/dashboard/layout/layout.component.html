@@ -18,7 +18,9 @@
                     <fa-icon [icon]="explore" class=" font-light  text-lg"></fa-icon>
                     <p class="text-xs my-1">Explore</p>
                 </div>
-                <div class="cursor-pointer items-center flex flex-col my-5">
+                <div 
+                [routerLink]="['/dashboard/shorts']"
+                class="cursor-pointer items-center flex flex-col my-5">
                     <fa-icon [icon]="shorts" class=" font-light  text-lg"></fa-icon>
                     <p class="text-xs my-1">Shorts</p>
                 </div>
@@ -58,7 +60,7 @@
                     </div>
                 </div>
                 <div class="headerActions flex items-center justify-between px-3">
-                    <fa-icon (click)="stopRecording()" [icon]="video" class=" font-light mx-3 text-gray-300  text-xl"></fa-icon>
+                    <fa-icon  [icon]="video" class=" font-light mx-3 text-gray-300  text-xl"></fa-icon>
                     <fa-icon [icon]="bell" class=" font-light mx-3 text-gray-300 text-xl"></fa-icon>
                     <fa-icon [icon]="user" class=" font-light mx-3 text-gray-300 text-2xl"></fa-icon>
                 </div>
@@ -79,3 +81,25 @@
         <router-outlet></router-outlet>
     </div>
 </div>
+
+<!-- voice activated absolute centered modal -->
+<div class="fixed top-0 left-0 w-full h-full z-50" *ngIf="isUserSpeaking">
+    <div class="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
+    <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+        <div class="bg-white w-96 h-96 rounded-lg flex flex-col items-center justify-center">
+            <div class="flex items-center my-4 p-4 rounded-full justify-center beam">
+                <fa-icon [icon]="microphone" class=" font-light  text-5xl text-green-500"></fa-icon>
+            </div>
+            <div class="flex items-center ny-4 justify-center">
+                <p class="text-2xl font-bold">Listening...</p>
+            </div>
+            <div class="flex items-center my-4 justify-center">
+                <p (click)="stopRecording()" class="text-sm cursor-pointer bg-red-600 text-white rounded-lg p-2 font-bold"> Stop Listenig</p>
+            </div>
+            <div class="flex items-center my-4 justify-center">
+                <p class="text-sm  p-2 font-bold">{{speakingText}}</p>
+            </div>
+
+
+        </div>
+    </div>

@@ -2,6 +2,29 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.4.
 
+This is an Angular clone of [Youtube](https://www.youtube.com/). It is a project to demonstrate my skills in Angular and Typescript. It is intended to do basic functions of youtube.
+
+
+## Technologies Used
+- Angular
+- Typescript
+- Tailwind CSS
+- Angular Font Awesome
+- RxJS
+- Youtube Data API v3
+
+## Features
+- Search for videos
+- View video details
+- View related videos
+- Watch video
+- View video categories
+- Voice search (built from scratch)
+
+## Images Table
+| Home Page | Video Details | Video Player |
+| | --- | --- |
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

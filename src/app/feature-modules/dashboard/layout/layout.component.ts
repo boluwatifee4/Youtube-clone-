@@ -40,6 +40,7 @@ export class LayoutComponent implements OnInit {
 
   isUserSpeaking: boolean = false;
   voiceValue: string = "";
+  speakingText: string = "";
   // categories arry
   categories = [
     {
@@ -160,7 +161,14 @@ export class LayoutComponent implements OnInit {
 
   stopRecording() {
     this.isUserSpeaking = false;
-    this.searchService.stop();
+    this.speakingText = "";
+    this.searchService.stop().subscribe((value) => {
+      // this.categoryService.changeCategory(value);
+      // console.log("value",value);
+      // this.voiceValue = value;
+    });
+      this.categoryService.changeCategory(this.voiceValue);
+
 
     // get voice value
   }
@@ -173,10 +181,11 @@ export class LayoutComponent implements OnInit {
     // Subscription for getting the voice input value.
     this.searchService.speechInput().subscribe((input) => {
       this.voiceValue = input;
-      console.log("voice value",this.voiceValue);
+      this.speakingText = input;
+      // console.log("voice value",this.voiceValue);
       // this.sendVoiceSearchValue(this.voiceValue);
       // this.searchInputValue(this.voiceValue);
-      this.isUserSpeaking = false;
+     
     }
     );
 

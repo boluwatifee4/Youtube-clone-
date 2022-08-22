@@ -4,11 +4,13 @@ import { LayoutComponent } from './layout/layout.component';
 import { VideosGalleryComponent } from './videos-gallery/videos-gallery.component';
 import { WatchVideoComponent } from './watch-video/watch-video.component';
 import { VideosLibraryComponent } from './videos-library/videos-library.component';
+import { ShortsComponent } from './shorts/shorts.component';
 const routes: Routes = [
     { path: '', component: LayoutComponent ,   children: [
         { path: 'gallery', component: VideosGalleryComponent },
         { path: 'gallery/:id', component: WatchVideoComponent },
         { path: 'library', component: VideosLibraryComponent },
+        { path: 'shorts', component: ShortsComponent },
     ]},
     
 ];
