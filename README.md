@@ -22,8 +22,11 @@ This is an Angular clone of [Youtube](https://www.youtube.com/). It is a project
 - Voice search (built from scratch)
 
 ## Images Table
-| Home Page | Video Details | Video Player |
-| | --- | --- |
+| ----- | ----- | ----- |
+|![image](https://user-images.githubusercontent.com/87859583/185899116-e417b423-604f-4558-b0e2-f006d6fb2cf3.png)
+ | ![image](https://user-images.githubusercontent.com/87859583/185899358-84d27aab-906d-4850-bf6c-cca5fd94aa67.png)
+ | ![image](https://user-images.githubusercontent.com/87859583/185899454-99506f29-46f1-40cf-8e22-68f89056f6be.png)
+ |
 
 ## Development server
 
