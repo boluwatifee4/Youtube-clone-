@@ -1,6 +1,6 @@
 # BimaYoutbe
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.
 
 This is an Angular clone of [Youtube](https://www.youtube.com/). It is a project to demonstrate my skills in Angular and Typescript. It is intended to do basic functions of youtube.
 
