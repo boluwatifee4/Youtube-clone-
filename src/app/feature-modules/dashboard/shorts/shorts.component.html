@@ -1,21 +1,28 @@
 <div class=" bg-gray-900  p-6 px-2">
-    <div  class=" flex flex-wrap m-2 items-center  justify-around">
+    <div class=" flex flex-wrap m-2 items-center  justify-around">
         <div class="flex flex-col m-1 my-3" *ngFor="let video of publicVideos">
-           <div (click)="viewVideo(video?.id?.videoId,video?.snippet?.title,video?.snippet?.thumbnails?.medium?.url,video?.snippet?.channelTitle)">
-            <img src={{video?.snippet?.thumbnails?.medium?.url}} alt="" class=" w-64 ">
-            <div class="my-2 flex justify-start">
-                <div class="mr-2">
-                    <img src={{video?.snippet?.thumbnails?.medium?.url}} alt="" class=" rounded-full w-8 h-8">
-                </div>
-                <div>
-                    <p class="text-sm font-semibold my-1">{{video?.snippet?.title | slice:0:25}}...</p>
-                    <p class="text-xs text-gray-300">
-                        {{video?.snippet?.channelTitle}}
-                    </p>
-                </div>
-            </div>
-           </div>
+            <app-videos-displayer
+                (clicker)="viewVideo(video?.id?.videoId,video?.snippet?.title,video?.snippet?.thumbnails?.medium?.url,video?.snippet?.channelTitle)"
+                videoTitle="{{video?.snippet?.title}}" videoThumbnail="{{video?.snippet?.thumbnails?.medium?.url}}"
+                channelTitle="{{video?.snippet?.channelTitle}}"></app-videos-displayer>
         </div>
     </div>
     <!-- <iframe width="480" height="270" src="//www.youtube.com/embed/lcSdR0GKbmI\" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe> -->
 </div>
+
+<!-- <div
+(click)="viewVideo(video?.id?.videoId,video?.snippet?.title,video?.snippet?.thumbnails?.medium?.url,video?.snippet?.channelTitle)">
+<img src={{video?.snippet?.thumbnails?.medium?.url}} alt="" class=" w-64 ">
+<div class="my-2 flex justify-start">
+    <div class="mr-2">
+        <img src={{video?.snippet?.thumbnails?.medium?.url}} alt="" class=" rounded-full w-8 h-8">
+    </div>
+    <div>
+        <p class="text-sm font-semibold my-1">{{video?.snippet?.title | slice:0:25}}...</p>
+        <p class="text-xs text-gray-300">
+            {{video?.snippet?.channelTitle}}
+        </p>
+    </div>
+</div>
+</div> -->
+<!-- videoThumbnail="{{video?.snippet?.thumbnails?.medium?.url}}" -->

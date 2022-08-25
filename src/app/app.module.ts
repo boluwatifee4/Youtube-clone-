@@ -7,6 +7,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 // import the HttpClientModule from @angular/common/http,
 
 import { HttpClientModule } from '@angular/common/http';
+// import { VideosDisplayerComponent } from './shared/videos-displayer/videos-displayer.component';
 // import { SafePipe } from './shared/pipes/safe.pipe';
 // import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 // import { DashboardComponent } from './feature-modules/dashboard/dashboard.component';
@@ -14,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
+    // VideosDisplayerComponent,
     // SafePipe
     // DashboardComponent
   ],

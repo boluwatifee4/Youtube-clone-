@@ -35,23 +35,11 @@
       <div class="h-fit">
         <h1 class="font-bold my-2">Related Videos</h1>
         <div *ngIf="emptyState === false" class="flex h-96 sc2 overflow-y-scroll flex-col justify-evenly ">
-          <div 
-          *ngFor="let video of relatedVids"
-          class="my-3 ">
-            <div (click)="viewVideo(video?.id?.videoId)">
-              <img src={{video?.snippet?.thumbnails?.medium?.url}} alt="" class=" w-64">
-              <div class="my-2 flex justify-start">
-                  <div class="mr-2">
-                      <img src={{video?.snippet?.thumbnails?.medium?.url}} alt="" class=" rounded-full w-8 h-8">
-                  </div>
-                  <div>
-                      <p class="text-sm font-semibold my-1">{{video?.snippet?.title | slice:0:25}}...</p>
-                      <p class="text-xs text-gray-300">
-                          {{video?.snippet?.channelTitle}}
-                      </p>
-                  </div>
-              </div>
-            </div>
+          <div *ngFor="let video of relatedVids" class="my-3 ">
+            <app-videos-displayer
+            (clicker)="viewVideo(video?.id?.videoId)"
+            videoTitle="{{video?.snippet?.title}}" videoThumbnail="{{video?.snippet?.thumbnails?.medium?.url}}"
+            channelTitle="{{video?.snippet?.channelTitle}}"></app-videos-displayer>
           </div>
         </div>
         <div *ngIf="emptyState === true" class="my-2">
