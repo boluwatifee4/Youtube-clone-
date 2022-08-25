@@ -40,7 +40,7 @@ export class VideosDisplayerComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this._videoThumbnail)
+    // console.log(this._videoThumbnail)
   }
 
 }

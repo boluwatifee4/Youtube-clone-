@@ -1,6 +1,6 @@
-<div [ngClass]="darkMode === true ? ' bg-gray-800 text-white' : 'bg-white text-black'" class=" flex ">
+<div [ngClass]="darkMode === true ? ' bg-gray-800 text-white' : 'bg-white text-black'" class=" flex justify-center ">
 
-    <div class="sidebar  mt-6 pl-2 px-6 py-2">
+    <div class="sidebar hidden md:block  mt-6 pl-2 px-6 py-2">
             <div class="sticky left-0 top-5">
             <div class="items-center flex flex-col">
                 <fa-icon [icon]="Hamburger" class=" font-light  text-lg"></fa-icon>
@@ -44,22 +44,24 @@
     <div class="body py-2">
         <div class="sticky bg-gray-800 top-0">
             <header class="flex items-center py-1 justify-between border-b border-gray-700">
-                <div class="logo">
-                    <img src="assets/images/logo.png" alt="logo" class="w-20">
+                <div class="logo w-[20%] md:auto">
+                    <img src="assets/images/logo.png" alt="logo" class=" w-20 ">
                 </div>
-                <div class="search flex items-center h-fit justify-between  ">
+                <div class="search w-[80%] md:w-auto flex items-center h-fit justify-between  ">
                     <div class="bg-gray-700 border border-gray-700">
-                        <input #searchInput type="text" placeholder="Search" class="bg-gray-900 h-fit w-96 pl-2 py-2 p-6"><span
+                        <div class="flex items-center justify-evenly">
+                            <input #searchInput type="text" placeholder="Search" class="bg-gray-900 h-fit w-[80%] md:w-96 md:pl-2 md:py-2 p-2 md:p-6"><span
                         (click)="searchInputValue(searchInput.value)"
-                            class="py-2 px-6">
-                            <fa-icon  [icon]="search" class=" font-light  text-md text-gray-300"></fa-icon>
+                            class="py-1 md:py-2 px-1 md:px-6">
+                            <fa-icon  [icon]="search" class=" font-light text-sm md:text-md text-gray-300"></fa-icon>
                         </span>
+                        </div>
                     </div>
                     <div (click)="startRecording()" class="mx-3 bg-gray-900 py-2 p-3 h-fit rounded-full">
-                        <fa-icon [icon]="microphone" class="h-fit font-light  text-lg text-gray-300"></fa-icon>
+                        <fa-icon [icon]="microphone" class="h-fit font-light text-sm md:text-lg text-gray-300"></fa-icon>
                     </div>
                 </div>
-                <div class="headerActions flex items-center justify-between px-3">
+                <div class="headerActions hidden md:flex items-center justify-between px-3">
                     <fa-icon  [icon]="video" class=" font-light mx-3 text-gray-300  text-xl"></fa-icon>
                     <fa-icon [icon]="bell" class=" font-light mx-3 text-gray-300 text-xl"></fa-icon>
                     <fa-icon [icon]="user" class=" font-light mx-3 text-gray-300 text-2xl"></fa-icon>

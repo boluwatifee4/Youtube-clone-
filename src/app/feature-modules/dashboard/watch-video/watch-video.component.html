@@ -1,6 +1,6 @@
 <div class="p-4  bg-gray-900">
-  <div class=" flex justify-between  m-2   ">
-    <div *ngFor="let video of videos" class="w-[70%]">
+  <div class=" flex flex-col md:flex-row justify-between  m-2   ">
+    <div *ngFor="let video of videos" class="w-auto md:w-[70%] ">
       <iframe class="w-full h-96" [src]="url | safe" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
@@ -8,8 +8,8 @@
 
       <div class="my-2">
         <h1 class="text-white text-xl text-semibold">{{ video.snippet.title }}</h1>
-        <div class="my-2 flex justify-between">
-          <div class="flex">
+        <div class="my-2 flex flex-col md:flex-row justify-between">
+          <div class="flex ">
             <div style="shape-outside: circle()" class="w-6  flex justify-center items-center">
               <h1 class="bg-red-600  rounded-full text-lg font-bold px-2 ">{{video?.snippet?.channelTitle[0]}}</h1>
             </div>
@@ -31,7 +31,7 @@
         </div>
       </div>
     </div>
-    <div class="w-[30%]  p-3 flex justify-center">
+    <div class="w-auto md:w-[30%]  p-3 flex justify-center">
       <div class="h-fit">
         <h1 class="font-bold my-2">Related Videos</h1>
         <div *ngIf="emptyState === false" class="flex h-96 sc2 overflow-y-scroll flex-col justify-evenly ">
