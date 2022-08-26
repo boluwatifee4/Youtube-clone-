@@ -18,9 +18,11 @@ export class VideosGalleryComponent implements OnInit {
   getCategories() {
     this.categoriesService.getcurrentCategoryWithObservable().subscribe({
        next: (data: any) => {
+        if(data !== ""){
         //  console.log("category",data);
          this.q = data;
          this.getPublicVideos(this.q);
+        }
        }
      })
    }
@@ -73,9 +75,27 @@ export class VideosGalleryComponent implements OnInit {
     this.router.navigateByUrl(`/dashboard/gallery/${id}`);
   }
 
-  
+  sessionHandler(){
+    if(JSON.parse(localStorage.getItem('cachedPublicVideos') || '[]').length < 1){
+      this.getPublicVideos(this.q);
+    }else {
+      this.publicVideos = JSON.parse(localStorage.getItem('cachedPublicVideos') || '[]')
+    }
+  }
   ngOnInit(): void {
-    this.getPublicVideos(this.q);
+    this.sessionHandler()
+
+    setTimeout(() => {
+      if(this.publicVideos.length > 0){
+        localStorage.setItem('cachedPublicVideos', JSON.stringify(this.publicVideos));
+      }
+    }, 3000)
+
+    setTimeout(() => {
+      localStorage.removeItem('cachedPublicVideos')
+    }, 600000)
+    
+    
     // this.getSingleVideo();
   }
 

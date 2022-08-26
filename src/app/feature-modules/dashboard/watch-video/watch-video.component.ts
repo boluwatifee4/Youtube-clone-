@@ -67,6 +67,7 @@ export class WatchVideoComponent implements OnInit {
     key: Endpoints.API_KEY
   }
  
+
   ngAfterViewInit() {
     // console.log("video", this.iD);
 
@@ -87,7 +88,12 @@ export class WatchVideoComponent implements OnInit {
         if(this.videos[0].snippet.tags !== undefined){
         this.q = this.videos[0]?.snippet?.tags[0] + " | " + this.videos[0]?.snippet?.tags[1];
         // console.log("q", this.q);
-        getRelatedVideos(this.q);
+        if(JSON.parse(localStorage.getItem('cachedRelatedVideos') || '[]').length < 1){
+          getRelatedVideos(this.q);
+        }else {
+          this.relatedVids = JSON.parse(localStorage.getItem('cachedRelatedVideos') || '[]')
+        }
+       
         this.emptyState = false;
         }else{
           this.emptyState = true;
@@ -106,7 +112,7 @@ export class WatchVideoComponent implements OnInit {
           } else {
             this.emptyState = true;
           }
-          console.log("related videos", this.relatedVids);
+          // console.log("related videos", this.relatedVids);
         }
       })
     }
@@ -130,7 +136,11 @@ export class WatchVideoComponent implements OnInit {
     }, 2000);
   }
   ngOnInit(): void {
-
+    setTimeout(() => {
+      if(this.relatedVids.length > 0){
+        localStorage.setItem('cachedRelatedVideos', JSON.stringify(this.relatedVids));
+      }
+    }, 3000)
   }
 
 }

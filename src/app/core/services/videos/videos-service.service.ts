@@ -43,4 +43,9 @@ export class VideosServiceService {
       }
     } );
   }
+
+  getCachedPublicVideos(){
+    return JSON.parse(localStorage.getItem('cachedPublicVideos') || '[]')
+  }
 }
+

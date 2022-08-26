@@ -18,13 +18,13 @@ export class VideosLibraryComponent implements OnInit {
 
   getRecents() {
     this.recents = this.subscriptionsService.viewRecents();
-    console.log("recents",this.recents.length);
+    // console.log("recents",this.recents.length);
     if(this.recents.length > 4) {
       this.setJustifyContentAround = true;
     }
   }
   viewVideo(id: any) {
-    console.log("video",id);
+    // console.log("video",id);
     this.router.navigateByUrl(`/dashboard/gallery/${id}`);
   }
 
