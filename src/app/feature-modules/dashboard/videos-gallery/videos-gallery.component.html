@@ -1,6 +1,6 @@
-<div class=" bg-gray-900  p-6 px-2">
-    <div class=" flex flex-col md:flex-row flex-wrap m-2 items-center  justify-around">
-        <div class="flex flex-col m-1 my-3" *ngFor="let video of publicVideos">
+<div class=" bg-gray-900 p-1  md:p-6 md:px-2">
+    <div class=" flex flex-col md:flex-row flex-wrap m-1 md:m-2 items-center  justify-around">
+        <div class="flex flex-col m-1 my-1 md:my-3" *ngFor="let video of publicVideos">
             <app-videos-displayer
                 (clicker)="viewVideo(video?.id?.videoId,video?.snippet?.title,video?.snippet?.thumbnails?.medium?.url,video?.snippet?.channelTitle)"
                 videoTitle="{{video?.snippet?.title}}" videoThumbnail="{{video?.snippet?.thumbnails?.medium?.url}}"

@@ -8,7 +8,7 @@
     class=" flex flex-wrap m-2 ">
         <div class="flex cursor-pointer flex-col m-1 my-3" *ngFor="let recent of recents">
            <div (click)="viewVideo(recent?.videoId)">
-            <img src={{recent?.description}} alt="" class=" w-64">
+            <img src={{recent?.description}} alt="" class=" w-auto md:w-64">
             <div class="my-2 flex justify-start">
                 <div class="mr-2">
                     <img src={{recent?.description}} alt="" class=" rounded-full w-8 h-8">

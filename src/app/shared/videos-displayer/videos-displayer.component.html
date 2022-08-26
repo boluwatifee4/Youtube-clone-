@@ -2,10 +2,10 @@
     <div class=" flex flex-wrap m-2 items-center  justify-around">
         <div class="flex flex-col m-1 my-3" *ngFor="let video of publicVideos"> -->
             <div (click)="onClick()">
-                <img src={{_videoThumbnail}} alt="" class=" w-64 ">
+                <img src={{_videoThumbnail}} alt="" class=" w-auto md:w-64 ">
                 <div class="my-2 flex justify-start">
                     <div class="mr-2">
-                        <img src={{_videoThumbnail}} alt="" class=" rounded-full w-8 h-8">
+                        <img src={{_videoThumbnail}} alt="" class=" rounded-full  w-8 h-8">
                     </div>
                     <div>
                         <p class="text-sm font-semibold my-1">{{_videoTitle | slice:0:25}}...</p>

@@ -1,12 +1,14 @@
 
-<div class="mt-10">
-    <div class="flex text-center flex-col items-center text-white justify-center">
-        <p>
-            This is an Angular clone of Youtube It is a project to demonstrate my skills in Angular and Typescript. It is intended to do basic functions of the youtube app.
-        </p>
-        <button 
-        [routerLink]="['/dashboard/gallery']"
-        class="bg-white my-3 text-black p-2 px-4 rounded">Explore</button>
+<div class="flex justify-center items-center">
+    <div class="top-[40%] fixed ">
+        <div class="flex text-center flex-col items-center text-white justify-center">
+            <p>
+                This is an Angular clone of Youtube It is a project to demonstrate my skills in Angular and Typescript. It is intended to do basic functions of the youtube app.
+            </p>
+            <button 
+            [routerLink]="['/dashboard/gallery']"
+            class="bg-white my-3 text-black p-2 px-4 rounded">Explore</button>
+        </div>
     </div>
 </div>
 <router-outlet></router-outlet>
