@@ -1,8 +1,9 @@
-# BimaYoutbe
+# [BimaYoutbe](https://bimayoutbe.netlify.app/)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.
 
 This is an Angular clone of [Youtube](https://www.youtube.com/). It is a project to demonstrate my skills in Angular and Typescript. It is intended to do basic functions of youtube.
+[Link](https://bimayoutbe.netlify.app/)
 
 
 ## Technologies Used
