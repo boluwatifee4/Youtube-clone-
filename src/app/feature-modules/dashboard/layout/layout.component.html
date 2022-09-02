@@ -1,43 +1,37 @@
 <div [ngClass]="darkMode === true ? ' bg-gray-800 text-white' : 'bg-white text-black'" class=" flex justify-center ">
 
     <div class="sidebar hidden md:block  mt-6 pl-2 px-6 py-2">
-            <div class="sticky left-0 top-5">
+        <div class="sticky left-0 top-5">
             <div class="items-center flex flex-col">
                 <fa-icon [icon]="Hamburger" class=" font-light  text-lg"></fa-icon>
             </div>
-    
+
             <div class="mt-10">
-                <div 
-                [routerLink]="['/dashboard/gallery']"
-                class="cursor-pointer items-center flex flex-col my-5">
+                <div [routerLink]="['/dashboard/gallery']" class="cursor-pointer items-center flex flex-col my-5">
                     <fa-icon [icon]="home" class=" font-light  text-lg"></fa-icon>
                     <p class="text-xs my-1">Home</p>
                 </div>
-    
+
                 <div class="cursor-pointer items-center flex flex-col my-5">
                     <fa-icon [icon]="explore" class=" font-light  text-lg"></fa-icon>
                     <p class="text-xs my-1">Explore</p>
                 </div>
-                <div 
-                [routerLink]="['/dashboard/shorts']"
-                class="cursor-pointer items-center flex flex-col my-5">
+                <div [routerLink]="['/dashboard/shorts']" class="cursor-pointer items-center flex flex-col my-5">
                     <fa-icon [icon]="shorts" class=" font-light  text-lg"></fa-icon>
                     <p class="text-xs my-1">Shorts</p>
                 </div>
-    
+
                 <div class="cursor-pointer items-center flex flex-col my-5">
                     <fa-icon [icon]="video" class=" font-light  text-lg"></fa-icon>
                     <p class="text-xs my-1">Subscriptions</p>
                 </div>
-    
-                <div 
-                [routerLink]="['/dashboard/library']"
-                class="cursor-pointer items-center flex flex-col my-5">
+
+                <div [routerLink]="['/dashboard/library']" class="cursor-pointer items-center flex flex-col my-5">
                     <fa-icon [icon]="watching" class=" font-light  text-lg"></fa-icon>
                     <p class="text-xs my-1">Library</p>
                 </div>
-    
-    
+
+
             </div>
         </div>
     </div>
@@ -50,19 +44,20 @@
                 <div class="search w-[80%] md:w-auto flex items-center h-fit justify-between  ">
                     <div class="bg-gray-700 border rounded-3xl md:rounded-none  border-gray-700">
                         <div class="flex items-center justify-evenly">
-                            <input #searchInput type="text" placeholder="Search" class="bg-gray-900 rounded-3xl rounded-tr-none rounded-br-none md:rounded-none h-fit w-[80%] md:w-96 md:pl-2 md:py-2 p-2 md:p-6"><span
-                        (click)="searchInputValue(searchInput.value)"
-                            class="py-1 md:py-2 px-1 md:px-6">
-                            <fa-icon  [icon]="search" class=" font-light text-sm md:text-md text-gray-300"></fa-icon>
-                        </span>
+                            <input #searchInput type="text" placeholder="Search"
+                                class="bg-gray-900 rounded-3xl rounded-tr-none rounded-br-none md:rounded-none h-fit w-[80%] md:w-96 md:pl-2 md:py-2 p-2 md:p-6"><span
+                                (click)="searchInputValue(searchInput.value)" class="py-1 md:py-2 px-1 md:px-6">
+                                <fa-icon [icon]="search" class=" font-light text-sm md:text-md text-gray-300"></fa-icon>
+                            </span>
                         </div>
                     </div>
                     <div (click)="startRecording()" class="mx-3 bg-gray-900 py-2 p-3 h-fit rounded-full">
-                        <fa-icon [icon]="microphone" class="h-fit font-light text-sm md:text-lg text-gray-300"></fa-icon>
+                        <fa-icon [icon]="microphone" class="h-fit font-light text-sm md:text-lg text-gray-300">
+                        </fa-icon>
                     </div>
                 </div>
                 <div class="headerActions hidden md:flex items-center justify-between px-3">
-                    <fa-icon  [icon]="video" class=" font-light mx-3 text-gray-300  text-xl"></fa-icon>
+                    <fa-icon [icon]="video" class=" font-light mx-3 text-gray-300  text-xl"></fa-icon>
                     <fa-icon [icon]="bell" class=" font-light mx-3 text-gray-300 text-xl"></fa-icon>
                     <fa-icon [icon]="user" class=" font-light mx-3 text-gray-300 text-2xl"></fa-icon>
                 </div>
@@ -74,7 +69,9 @@
                 <div class="categories  sc2 overflow-x-scroll ">
                     <div style="width: max-content;" class="flex items-center ">
                         <div *ngFor="let category of categories" class="mx-2 w-auto cursor-pointer">
-                            <p (click)="sendCategories(category?.value)" class="bg-gray-700 border text-sm border-gray-500 p-2   rounded-full">{{category?.name}}</p>
+                            <p (click)="sendCategories(category?.value)"
+                                class="bg-gray-700 border text-sm border-gray-500 p-2   rounded-full">{{category?.name}}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -87,25 +84,20 @@
 <!-- navbar mobile -->
 <div class="flex justify-center items-center mx-2 md:hidden">
     <div class="fixed bottom-0 text-white w-full">
-        <div class="flex justify-around items-center rounded-2xl rounded-bl-none rounded-br-none bg-gray-900 px-1  p-2 w-full">
-            <div 
-                [routerLink]="['/dashboard/shorts']"
-                class="cursor-pointer items-center flex flex-col">
-                    <fa-icon [icon]="shorts" class=" font-light  text-lg"></fa-icon>
-                    <p class="text-xs ">Shorts</p>
-                </div>
-                <div 
-            [routerLink]="['/dashboard/gallery']"
-            class="cursor-pointer items-center flex flex-col">
+        <div
+            class="flex justify-around items-center rounded-2xl rounded-bl-none rounded-br-none bg-gray-900 px-1  p-2 w-full">
+            <div [routerLink]="['/dashboard/shorts']" class="cursor-pointer items-center flex flex-col">
+                <fa-icon [icon]="shorts" class=" font-light  text-lg"></fa-icon>
+                <p class="text-xs ">Shorts</p>
+            </div>
+            <div [routerLink]="['/dashboard/gallery']" class="cursor-pointer items-center flex flex-col">
                 <fa-icon [icon]="home" class=" font-light  text-3xl"></fa-icon>
                 <p class="text-xs ">Home</p>
             </div>
-                <div 
-                [routerLink]="['/dashboard/library']"
-                class="cursor-pointer items-center flex flex-col ">
-                    <fa-icon [icon]="watching" class=" font-light  text-lg"></fa-icon>
-                    <p class="text-xs ">Library</p>
-                </div>
+            <div [routerLink]="['/dashboard/library']" class="cursor-pointer items-center flex flex-col ">
+                <fa-icon [icon]="watching" class=" font-light  text-lg"></fa-icon>
+                <p class="text-xs ">Library</p>
+            </div>
         </div>
     </div>
 </div>
@@ -122,12 +114,12 @@
                 <p class="text-2xl font-bold">Listening...</p>
             </div>
             <div class="flex items-center my-4 justify-center">
-                <p (click)="stopRecording()" class="text-sm cursor-pointer bg-red-600 text-white rounded-lg p-2 font-bold"> Stop Listenig</p>
+                <p (click)="stopRecording()"
+                    class="text-sm cursor-pointer bg-red-600 text-white rounded-lg p-2 font-bold"> Stop Listenig</p>
             </div>
             <div class="flex items-center my-4 justify-center">
                 <p class="text-sm  p-2 font-bold">{{speakingText}}</p>
             </div>
-
-
         </div>
     </div>
+</div>
