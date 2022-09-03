@@ -9,6 +9,9 @@ import { SafePipe } from 'src/app/shared/pipes/safe.pipe';
 import { VideosLibraryComponent } from './videos-library/videos-library.component';
 import { ShortsComponent } from './shorts/shorts.component';
 import { VideosDisplayerComponent } from 'src/app/shared/videos-displayer/videos-displayer.component';
+import { SidebarComponent } from 'src/app/core/coreUtils/sidebar/sidebar.component';
+import { HeaderComponent } from 'src/app/core/coreUtils/header/header.component';
+import { MobileNavbarComponent } from 'src/app/core/coreUtils/mobile-navbar/mobile-navbar.component';
 @NgModule({
     declarations: [
         LayoutComponent, 
@@ -17,7 +20,10 @@ import { VideosDisplayerComponent } from 'src/app/shared/videos-displayer/videos
         SafePipe, 
         VideosLibraryComponent, 
         ShortsComponent, 
-        VideosDisplayerComponent
+        VideosDisplayerComponent,
+        SidebarComponent,
+        HeaderComponent,
+        MobileNavbarComponent
     ],
     imports: [
         CommonModule,

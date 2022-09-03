@@ -1,0 +1,32 @@
+
+<div class="sticky left-0 top-5">
+    <div class="items-center flex flex-col">
+        <fa-icon [icon]="Hamburger" class=" font-light  text-lg"></fa-icon>
+    </div>
+
+    <div class="mt-10">
+        <div [routerLink]="['/dashboard/gallery']" class="cursor-pointer items-center flex flex-col my-5">
+            <fa-icon [icon]="home" class=" font-light  text-lg"></fa-icon>
+            <p class="text-xs my-1">Home</p>
+        </div>
+
+        <div class="cursor-pointer items-center flex flex-col my-5">
+            <fa-icon [icon]="explore" class=" font-light  text-lg"></fa-icon>
+            <p class="text-xs my-1">Explore</p>
+        </div>
+        <div [routerLink]="['/dashboard/shorts']" class="cursor-pointer items-center flex flex-col my-5">
+            <fa-icon [icon]="shorts" class=" font-light  text-lg"></fa-icon>
+            <p class="text-xs my-1">Shorts</p>
+        </div>
+
+        <div class="cursor-pointer items-center flex flex-col my-5">
+            <fa-icon [icon]="video" class=" font-light  text-lg"></fa-icon>
+            <p class="text-xs my-1">Subscriptions</p>
+        </div>
+
+        <div [routerLink]="['/dashboard/library']" class="cursor-pointer items-center flex flex-col my-5">
+            <fa-icon [icon]="watching" class=" font-light  text-lg"></fa-icon>
+            <p class="text-xs my-1">Library</p>
+        </div>
+    </div>
+</div>

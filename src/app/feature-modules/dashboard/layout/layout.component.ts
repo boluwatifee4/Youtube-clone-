@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, AfterViewInit, DoCheck } from '@angular/core';
 import { faHamburger } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faMicrophone } from '@fortawesome/free-solid-svg-icons';
@@ -13,6 +13,8 @@ import { faTv } from '@fortawesome/free-solid-svg-icons';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { CatrgorieserviceService } from 'src/app/core/services/categories/catrgorieservice.service';
 import { SearchServiceService } from 'src/app/core/services/search/search-service.service';
+import { SubscriptionsServiceService } from 'src/app/core/services/subscriptions/subscriptions-service.service';
+import { notificationModel } from 'src/app/shared/models/subscriptions.model';
 import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-layout',
@@ -41,6 +43,11 @@ export class LayoutComponent implements OnInit {
   isUserSpeaking: boolean = false;
   voiceValue: string = "";
   speakingText: string = "";
+
+ notifications: any = [];
+ isNotificationOpen: Boolean = false;
+ notificationEmptyState: Boolean = false;
+ indicator: Boolean = false
   // categories arry
   categories = [
     {
@@ -120,36 +127,39 @@ export class LayoutComponent implements OnInit {
   public toggleDarkMode() {
     this.darkMode = !this.darkMode;
   }
-  // get voiceSearchvalue
-  // getVoiceSearchValue(){
-  //   this.searchService.getcurrentEndresultsWithObservable().subscribe((value) => {
-  //     console.log("valuenew",value);
-  //     // this.voiceValue = value;
-  //   });
-  // }
+  getNotification(){
+    this.notifications = this.subscriptionService.getNotifications()
+    if(this.notifications?.length < 1 || Object.keys(this.notifications)?.length < 1){
+      this.notificationEmptyState = true
+    }else {
+      this.notificationEmptyState = false
+    }
+
+    
+   }
   constructor(
     private categoryService: CatrgorieserviceService,
-    private searchService: SearchServiceService
+    private searchService: SearchServiceService,
+    private subscriptionService: SubscriptionsServiceService
   ) { 
-    // this.getVoiceSearchValue();
+    
+    
   }
 
   // send categories
   sendCategories(name: any) {
     this.categoryService.changeCategory(name);
   }
-  // //send voiceSearchValue
-  // sendVoiceSearchValue(value: any){
-  //   this.searchService.changeEndresults(value);
-  // }
+  
+  hideIndicator(){
+    this.indicator = false;
+  }
 
 
 
   searchInputValue(searchInput: string){
     // console.log("search input value",searchInput);
     this.categoryService.changeCategory(searchInput);
-    // reset search input
-    // searchInput = "";
   }
 
   startRecording() {
@@ -163,9 +173,6 @@ export class LayoutComponent implements OnInit {
     this.isUserSpeaking = false;
     this.speakingText = "";
     this.searchService.stop().subscribe((value) => {
-      // this.categoryService.changeCategory(value);
-      // console.log("value",value);
-      // this.voiceValue = value;
     });
       this.categoryService.changeCategory(this.voiceValue);
 
@@ -182,16 +189,33 @@ export class LayoutComponent implements OnInit {
     this.searchService.speechInput().subscribe((input) => {
       this.voiceValue = input;
       this.speakingText = input;
-      // console.log("voice value",this.voiceValue);
-      // this.sendVoiceSearchValue(this.voiceValue);
-      // this.searchInputValue(this.voiceValue);
-     
     }
     );
 
   }
+
+  toggleNotificationModal(){
+    this.isNotificationOpen = !this.isNotificationOpen;
+  }
   ngOnInit(): void {
     this.initVoiceInput();
+   
+    // this.sendNotification();
   }
+
+
+  ngDoCheck(): void {
+    this.getNotification();
+    if(!this.notifications?.length  || !Object.keys(this.notifications)?.length ){
+      this.indicator = true
+    } else {
+      this.indicator = false
+    }
+    if(this.notifications?.length > 8) {
+      localStorage.removeItem('notifications')
+    }
+  }
+
+  
 
 }

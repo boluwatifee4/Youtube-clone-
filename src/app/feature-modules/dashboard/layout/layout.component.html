@@ -1,39 +1,7 @@
 <div [ngClass]="darkMode === true ? ' bg-gray-800 text-white' : 'bg-white text-black'" class=" flex justify-center ">
 
     <div class="sidebar hidden md:block  mt-6 pl-2 px-6 py-2">
-        <div class="sticky left-0 top-5">
-            <div class="items-center flex flex-col">
-                <fa-icon [icon]="Hamburger" class=" font-light  text-lg"></fa-icon>
-            </div>
-
-            <div class="mt-10">
-                <div [routerLink]="['/dashboard/gallery']" class="cursor-pointer items-center flex flex-col my-5">
-                    <fa-icon [icon]="home" class=" font-light  text-lg"></fa-icon>
-                    <p class="text-xs my-1">Home</p>
-                </div>
-
-                <div class="cursor-pointer items-center flex flex-col my-5">
-                    <fa-icon [icon]="explore" class=" font-light  text-lg"></fa-icon>
-                    <p class="text-xs my-1">Explore</p>
-                </div>
-                <div [routerLink]="['/dashboard/shorts']" class="cursor-pointer items-center flex flex-col my-5">
-                    <fa-icon [icon]="shorts" class=" font-light  text-lg"></fa-icon>
-                    <p class="text-xs my-1">Shorts</p>
-                </div>
-
-                <div class="cursor-pointer items-center flex flex-col my-5">
-                    <fa-icon [icon]="video" class=" font-light  text-lg"></fa-icon>
-                    <p class="text-xs my-1">Subscriptions</p>
-                </div>
-
-                <div [routerLink]="['/dashboard/library']" class="cursor-pointer items-center flex flex-col my-5">
-                    <fa-icon [icon]="watching" class=" font-light  text-lg"></fa-icon>
-                    <p class="text-xs my-1">Library</p>
-                </div>
-
-
-            </div>
-        </div>
+        <app-sidebar></app-sidebar>
     </div>
     <div class="body py-2">
         <div class="sticky bg-gray-800 top-0">
@@ -45,8 +13,9 @@
                     <div class="bg-gray-700 border rounded-3xl md:rounded-none  border-gray-700">
                         <div class="flex items-center justify-evenly">
                             <input #searchInput type="text" placeholder="Search"
-                                class="bg-gray-900 rounded-3xl rounded-tr-none rounded-br-none md:rounded-none h-fit w-[80%] md:w-96 md:pl-2 md:py-2 p-2 md:p-6"><span
-                                (click)="searchInputValue(searchInput.value)" class="py-1 md:py-2 px-1 md:px-6">
+                                class="bg-gray-900 rounded-3xl rounded-tr-none rounded-br-none md:rounded-none h-fit w-[95%] md:w-96 md:pl-2 md:py-2 p-2 md:p-6">
+                                <span
+                                (click)="searchInputValue(searchInput.value)" class="py-1 md:py-2 px-1 md:px-6 w-[15%]">
                                 <fa-icon [icon]="search" class=" font-light text-sm md:text-md text-gray-300"></fa-icon>
                             </span>
                         </div>
@@ -58,7 +27,7 @@
                 </div>
                 <div class="headerActions hidden md:flex items-center justify-between px-3">
                     <fa-icon [icon]="video" class=" font-light mx-3 text-gray-300  text-xl"></fa-icon>
-                    <fa-icon [icon]="bell" class=" font-light mx-3 text-gray-300 text-xl"></fa-icon>
+                    <fa-icon (click)="toggleNotificationModal()" [icon]="bell" class=" cursor-pointer font-light mx-3 text-gray-300 text-xl"></fa-icon><span *ngIf="indicator === false" class="ml-[-20px] mt-[-10px] bg-red-500 p-1 rounded-full"></span>
                     <fa-icon [icon]="user" class=" font-light mx-3 text-gray-300 text-2xl"></fa-icon>
                 </div>
             </header>
@@ -82,25 +51,7 @@
 </div>
 
 <!-- navbar mobile -->
-<div class="flex justify-center items-center mx-2 md:hidden">
-    <div class="fixed bottom-0 text-white w-full">
-        <div
-            class="flex justify-around items-center rounded-2xl rounded-bl-none rounded-br-none bg-gray-900 px-1  p-2 w-full">
-            <div [routerLink]="['/dashboard/shorts']" class="cursor-pointer items-center flex flex-col">
-                <fa-icon [icon]="shorts" class=" font-light  text-lg"></fa-icon>
-                <p class="text-xs ">Shorts</p>
-            </div>
-            <div [routerLink]="['/dashboard/gallery']" class="cursor-pointer items-center flex flex-col">
-                <fa-icon [icon]="home" class=" font-light  text-3xl"></fa-icon>
-                <p class="text-xs ">Home</p>
-            </div>
-            <div [routerLink]="['/dashboard/library']" class="cursor-pointer items-center flex flex-col ">
-                <fa-icon [icon]="watching" class=" font-light  text-lg"></fa-icon>
-                <p class="text-xs ">Library</p>
-            </div>
-        </div>
-    </div>
-</div>
+<app-header></app-header>
 
 <!-- voice activated absolute centered modal -->
 <div class="fixed top-0 left-0 w-full h-full z-50" *ngIf="isUserSpeaking">
@@ -120,6 +71,30 @@
             <div class="flex items-center my-4 justify-center">
                 <p class="text-sm  p-2 font-bold">{{speakingText}}</p>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- notification -->
+<div *ngIf="isNotificationOpen" class="absolute text-white top-[13%] left-[80%] right-[2%]">
+    <div class="w-[100%] bg-gray-900 text-center rounded-lg p-4">
+        <div class="flex border-b justify-between items-center">
+            <div class=" text-left">
+                <h1>Notifications</h1>
+            </div>
+            <div class="cursor-pointer" (click)="toggleNotificationModal()">
+                <p (click)="hideIndicator()" class="text-sm">Close</p>
+            </div>
+        </div>
+
+        <div class="h-[50vh] sc2 px-2 overflow-y-scroll">
+            <ul class="my-2 text-left text-sm">
+                <li *ngIf="notificationEmptyState === false">
+                <li class="my-2 bg-gray-800 p-2" *ngFor="let notification of notifications">{{notification?.message}}
+                </li>
+
+                <li *ngIf="notificationEmptyState === true" class="my-2 text-center">Nothing to show ):</li>
+            </ul>
         </div>
     </div>
 </div>

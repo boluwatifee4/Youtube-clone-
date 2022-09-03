@@ -117,13 +117,7 @@ export class WatchVideoComponent implements OnInit {
       })
     }
 
-    // get comments
-    // this.commentsService.getComments(this.commentsInterface).subscribe({
-    //   next: (data: any) => {
-    //     console.log("comments", data);
-    //     this.commentS = data?.items;
-    //   }
-    // })
+
   }
 
 

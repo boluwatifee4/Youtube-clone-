@@ -1,11 +1,12 @@
 import { Component, OnInit, } from '@angular/core';
 import { VideosServiceService } from 'src/app/core/services/videos/videos-service.service';
-import { recentsModel } from 'src/app/shared/models/subscriptions.model';
+import { notificationModel, recentsModel } from 'src/app/shared/models/subscriptions.model';
 import { SubscriptionsServiceService } from 'src/app/core/services/subscriptions/subscriptions-service.service';
 import { CHANNELSMODEL, VideoModel } from 'src/app/shared/models/video.model';
 import { Endpoints } from 'src/app/core/coreUtils/endpoints';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CatrgorieserviceService } from 'src/app/core/services/categories/catrgorieservice.service';
+
 @Component({
   selector: 'app-videos-gallery',
   templateUrl: './videos-gallery.component.html',
@@ -26,6 +27,8 @@ export class VideosGalleryComponent implements OnInit {
        }
      })
    }
+
+
   constructor(
     private videosService: VideosServiceService,
     private router: Router,
@@ -33,7 +36,7 @@ export class VideosGalleryComponent implements OnInit {
     private subscriptionsService: SubscriptionsServiceService,
     private categoriesService: CatrgorieserviceService
   ) { 
-    this.getCategories();
+    this.getCategories();    
   }
   q: string = "reviews | compilations ";
    channels: CHANNELSMODEL = {
@@ -88,11 +91,23 @@ export class VideosGalleryComponent implements OnInit {
     setTimeout(() => {
       if(this.publicVideos.length > 0){
         localStorage.setItem('cachedPublicVideos', JSON.stringify(this.publicVideos));
+        let notification: notificationModel = {
+          message: "In order to reduce quota consumption please note that this application isn't making any live requests for the next 10 minutes",
+          time: new Date()
+          }
+      
+          this.subscriptionsService.updateNotification(notification)
       }
-    }, 3000)
+    }, 7000)
 
     setTimeout(() => {
       localStorage.removeItem('cachedPublicVideos')
+      let notification: notificationModel = {
+        message: "Your are now viewing live data",
+        time: new Date()
+        }
+    
+        this.subscriptionsService.updateNotification(notification)
     }, 600000)
     
     

@@ -1,0 +1,19 @@
+<div class="flex justify-center items-center mx-2 md:hidden">
+    <div class="fixed bottom-0 text-white w-full">
+        <div
+            class="flex justify-around items-center rounded-2xl rounded-bl-none rounded-br-none bg-gray-900 px-1  p-2 w-full">
+            <div [routerLink]="['/dashboard/shorts']" class="cursor-pointer items-center flex flex-col">
+                <fa-icon [icon]="shorts" class=" font-light  text-lg"></fa-icon>
+                <p class="text-xs ">Shorts</p>
+            </div>
+            <div [routerLink]="['/dashboard/gallery']" class="cursor-pointer items-center flex flex-col">
+                <fa-icon [icon]="home" class=" font-light  text-3xl"></fa-icon>
+                <p class="text-xs ">Home</p>
+            </div>
+            <div [routerLink]="['/dashboard/library']" class="cursor-pointer items-center flex flex-col ">
+                <fa-icon [icon]="watching" class=" font-light  text-lg"></fa-icon>
+                <p class="text-xs ">Library</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -6,6 +6,9 @@ import { BehaviorSubject } from 'rxjs';
 export class CatrgorieserviceService {
   private category = new BehaviorSubject('all');
   currentCategory = this.category.asObservable();
+
+  private notification = new BehaviorSubject([])
+  currentNotification = this.notification.asObservable()
   changeCategory(category: any) {
     this.category.next(category);
   }
@@ -13,7 +16,13 @@ export class CatrgorieserviceService {
   getcurrentCategoryWithObservable(): BehaviorSubject<any> {
     return this.category;
   }
+updateNotification(notification: any){
+  this.notification.next(notification);
+}
 
+getNotifications(){
+  return this.notification;
+}
 
 
   constructor() { }
