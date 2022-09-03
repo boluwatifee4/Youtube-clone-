@@ -30,7 +30,7 @@ export class ShortsComponent implements OnInit {
     this.videosService.getPublicVideos(this.channels, q).subscribe({
       next: (data: any) => {
         this.publicVideos = data?.items;
-        console.log("videos",this.publicVideos);
+        // console.log("videos",this.publicVideos);
       }
     })
   }
